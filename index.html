@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú del Bar - Colegio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Custom styles that can't be done with Tailwind */
+        .food-item {
+            transition: all 0.3s ease;
+        }
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .order-btn {
+            transition: all 0.2s ease;
+        }
+        .order-btn:hover {
+            transform: scale(1.05);
+        }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-green-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold">Menú del Bar Escolar</h1>
+                <div class="relative">
+                    <button id="cart-btn" class="text-white text-xl p-2">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="cart-badge bg-red-500 text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Image Placeholder -->
+    <section class="bg-green-500 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex flex-col items-center text-center">
+                
+                </div>
+                <h2 class="text-2xl md:text-4xl font-bold mb-4">Bienvenidos al Menú del Bar Escolar</h2>
+                <p class="text-lg md:text-xl mb-6">Deliciosos snacks y bebidas para disfrutar en los descansos</p>
+                <a href="#menu" class="bg-white text-green-600 font-bold py-2 px-6 rounded-full hover:bg-green-100 transition duration-300">
+                    Ver Menú
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Nuestro Menú</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Food Item 1 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/sandwich-mixto img 1.jpg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sándwich de Jamón y Queso</h3>
+                        <p class="text-gray-600 mb-4">Pan fresco con jamón, queso y lechuga.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-green-600">$2.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Sándwich de Jamón y Queso', 3.50)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 2 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/hamburguesa.png" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hamburguesa Clásica</h3>
+                        <p class="text-gray-600 mb-4">Carne, queso, lechuga, tomate y salsa especial.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Hamburguesa Clásica', 4.50)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 3 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/hot dog.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Hot Dog</h3>
+                        <p class="text-gray-600 mb-4">Salchicha con ketchup, mostaza y cebolla.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.50</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Hot Dog', 2.50)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 4 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/empanada de pollo img3.webp" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Empanada de Carne</h3>
+                        <p class="text-gray-600 mb-4">Empanada casera rellena de pollo.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Empanada de Carne', 2.00)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 5 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/jugos img5.webp" alt="">/span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Jugo Natural</h3>
+                        <p class="text-gray-600 mb-4">Jugo fresco de naranja, fresa o piña.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Jugo Natural', 1.50)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 6 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/refresco img8.jpg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Refresco</h3>
+                        <p class="text-gray-600 mb-4">Variedad de sabores: cola, naranja, limón.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.50</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Refresco', 1.20)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 7 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/agua cielo.png" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Agua Mineral</h3>
+                        <p class="text-gray-600 mb-4">Agua purificada 500ml.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.60</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Agua Mineral', 1.00)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 8 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/pan img7.jpg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Pan de Chocolate</h3>
+                        <p class="text-gray-600 mb-4">Delicioso Pan casero.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.75</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Muffin de Chocolate', 1.80)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 9 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/fruta fresca.avif" alt="">></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fruta Fresca</h3>
+                        <p class="text-gray-600 mb-4">Manzana, pera o banano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$1.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Fruta Fresca', 1.00)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 10 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/yogurt con fruta img6.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Yogurt con Fruta</h3>
+                        <p class="text-gray-600 mb-4">Yogurt natural con Fruta.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$2.00</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Yogurt con Granola', 2.20)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 11 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/papas.jpeg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Papas Fritas</h3>
+                        <p class="text-gray-600 mb-4">Porción de papas fritas crujientes.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.50</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Papas Fritas', 2.00)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Item 12 -->
+                <div class="food-item bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500"><img src="imagenes/helados.jpg" alt=""></span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Helado</h3>
+                        <p class="text-gray-600 mb-4">Helado de sabores.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-blue-600">$0.50</span>
+                            <button class="order-btn bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600" onclick="addToCart('Café', 1.50)">
+                                Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex justify-center items-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md max-h-[80vh] overflow-y-auto m-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Tu Pedido</h3>
+                    <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="mb-6">
+                    <!-- Cart items will be inserted here -->
+                    <p id="empty-cart-message" class="text-center text-gray-500 py-4">Tu carrito está vacío</p>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4">
+                    <div class="flex justify-between mb-4">
+                        <span class="font-bold text-gray-700">Total:</span>
+                        <span id="cart-total" class="font-bold text-green-600">$0.00</span>
+                    </div>
+                    <button id="checkout-btn" class="w-full bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+                        Confirmar Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex justify-center items-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6 m-4">
+            <div class="text-center">
+                <div class="text-green-500 text-5xl mb-4">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">¡Pedido Confirmado!</h3>
+                <p class="text-gray-600 mb-6">Tu pedido ha sido recibido y estará listo pronto.</p>
+                <button id="close-confirmation" class="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition duration-300">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Shopping cart functionality
+        let cart = [];
+        
+        // DOM elements
+        const cartBtn = document.getElementById('cart-btn');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCart = document.getElementById('close-cart');
+        const cartItems = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartTotal = document.getElementById('cart-total');
+        const cartCount = document.getElementById('cart-count');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const closeConfirmation = document.getElementById('close-confirmation');
+        
+        // Event Listeners
+        cartBtn.addEventListener('click', openCart);
+        closeCart.addEventListener('click', closeCartModal);
+        checkoutBtn.addEventListener('click', confirmOrder);
+        closeConfirmation.addEventListener('click', closeConfirmationModal);
+        
+        // Functions
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            
+            // Show visual feedback
+            const btn = event.target;
+            btn.innerHTML = '<i class="fas fa-check"></i> Añadido';
+            btn.classList.remove('bg-blue-500');
+            btn.classList.add('bg-green-500');
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Pedir';
+                btn.classList.remove('bg-green-500');
+                btn.classList.add('bg-blue-500');
+            }, 1500);
+        }
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            if (totalItems > 0) {
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+            
+            // Update cart modal if open
+            if (cartModal.classList.contains('hidden') === false) {
+                renderCartItems();
+            }
+        }
+        
+        function renderCartItems() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartTotal.textContent = '$0.00';
+                return;
+            }
+            
+            emptyCartMessage.classList.add('hidden');
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'flex justify-between items-center mb-4 pb-4 border-b border-gray-200';
+                itemElement.innerHTML = `
+                    <div>
+                        <h4 class="font-semibold">${item.name}</h4>
+                        <span class="text-gray-600">$${item.price.toFixed(2)} c/u</span>
+                    </div>
+                    <div class="flex items-center">
+                        <button onclick="changeQuantity('${item.name}', -1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-minus text-xs"></i>
+                        </button>
+                        <span class="mx-3">${item.quantity}</span>
+                        <button onclick="changeQuantity('${item.name}', 1)" class="bg-gray-200 text-gray-700 w-8 h-8 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-plus text-xs"></i>
+                        </button>
+                        <span class="ml-4 font-semibold">$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+                
+                cartItems.appendChild(itemElement);
+            });
+            
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+        
+        function changeQuantity(name, change) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += change;
+                
+                if (cart[itemIndex].quantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                }
+            }
+            
+            updateCart();
+        }
+        
+        function openCart() {
+            renderCartItems();
+            cartModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCartModal() {
+            cartModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function confirmOrder() {
+            // In a real app, you would send this order to a server
+            console.log('Order submitted:', cart);
+            
+            // Show confirmation
+            closeCartModal();
+            confirmationModal.classList.remove('hidden');
+            
+            // Clear cart
+            cart = [];
+            updateCart();
+        }
+        
+        function closeConfirmationModal() {
+            confirmationModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
